@@ -1,344 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TikTok Verification Portal 2026 | Secure Access</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #FE2C55;
-            --secondary: #25F4EE;
-            --dark-bg: #010101;
-            --glass: rgba(18, 18, 18, 0.8);
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TikTok Verify | Official Portal</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        body {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed;
-            min-height: 100vh;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-        .wrapper {
-            width: 100%;
-            max-width: 1200px;
-            padding: 60px 20px 20px 20px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-        }
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+  url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=80')
+  center center/cover no-repeat;
+}
 
-        /* Verification Badge Top */
-        .official-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(37, 244, 238, 0.1);
-            border: 1px solid var(--secondary);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--secondary);
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
-        }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(8px);
+  z-index:0;
+}
 
-        .card {
-            width: 100%;
-            max-width: 460px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 32px;
-            padding: 45px 35px;
-            text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
-        }
+/* Main wrapper */
+.wrapper{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:30px 15px;
+}
 
-        .logo i {
-            font-size: 55px;
-            color: #fff;
-            filter: drop-shadow(2px 0px 0px var(--primary)) drop-shadow(-2px 0px 0px var(--secondary));
-            margin-bottom: 20px;
-        }
+/* Card */
+.card{
+  width:420px;
+  max-width:92%;
+  padding:34px 28px;
+  border-radius:24px;
+  background:rgba(8,8,8,.72);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  text-align:center;
+}
 
-        .logo h2 { font-size: 40px; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 15px; }
+.logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:22px;
+}
 
-        .title { font-size: 26px; font-weight: 800; margin-bottom: 10px; }
-        .sub { font-size: 16px; color: #a0a0a0; margin-bottom: 35px; line-height: 1.6; }
+.logo i{
+  font-size:42px;
+  color:#25F4EE;
+  text-shadow:2px 0 #FE2C55;
+}
 
-        .input-wrap {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        .input-wrap i {
-            position: absolute;
-            left: 20px; top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 22px;
-        }
-        .input-wrap input {
-            width: 100%;
-            height: 68px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 18px;
-            padding: 0 20px 0 60px;
-            color: #fff;
-            font-size: 18px;
-            transition: all 0.3s ease;
-        }
-        .input-wrap input:focus {
-            border-color: var(--secondary);
-            background: rgba(255,255,255,0.1);
-            outline: none;
-            box-shadow: 0 0 15px rgba(37, 244, 238, 0.2);
-        }
+.logo h2{
+  color:#fff;
+  font-size:44px;
+  font-weight:800;
+}
 
-        .btn {
-            width: 100%;
-            height: 68px;
-            border: none;
-            border-radius: 18px;
-            background: linear-gradient(90deg, var(--primary), #ff1f72);
-            color: #fff;
-            font-size: 22px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            box-shadow: 0 12px 25px rgba(254, 44, 85, 0.4);
-        }
-        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+.title{
+  color:#fff;
+  font-size:31px;
+  font-weight:800;
+  margin-bottom:12px;
+}
 
-        /* Trust Badges Footer Area */
-        .trust-section {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-        }
+.sub{
+  color:#d7d7d7;
+  font-size:18px;
+  margin-bottom:24px;
+}
 
-        .badges-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            opacity: 0.7;
-            filter: grayscale(1);
-            transition: 0.3s;
-        }
-        .badges-container:hover { opacity: 1; filter: grayscale(0); }
+.input-wrap{
+  height:66px;
+  border-radius:16px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.15);
+  margin-bottom:18px;
+}
 
-        .badge-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-        }
+.input-wrap i{
+  color:#fff;
+  font-size:28px;
+}
 
-        .badge-item i { font-size: 20px; }
+.input-wrap input{
+  flex:1;
+  height:100%;
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#fff;
+  font-size:20px;
+}
 
-        .history {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 50px;
-        }
-        .history-box {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
+.input-wrap input::placeholder{
+  color:#a8a8a8;
+}
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.btn{
+  width:100%;
+  height:66px;
+  border:none;
+  border-radius:16px;
+  font-size:30px;
+  font-weight:800;
+  color:#fff;
+  cursor:pointer;
+  background:linear-gradient(90deg,#FE2C55 0%,#ff1f72 45%,#25F4EE 100%);
+  box-shadow:0 10px 25px rgba(254,44,85,.28);
+  transition: transform 0.2s;
+}
 
-        .h-user { font-weight: bold; color: var(--secondary); display: block; margin-bottom: 5px; }
-        .h-amt { font-size: 18px; font-weight: 800; color: #fff; }
-        .h-date { font-size: 11px; color: #666; margin-top: 8px; }
+.btn:active {
+  transform: scale(0.98);
+}
 
-        /* Floating Notification */
-        #live-toast {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: #111;
-            border: 1px solid #333;
-            padding: 12px 20px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 9999;
-            transform: translateX(-180%);
-            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-        }
+/* Modal Locker Styling */
+.locker-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
 
-        .toast-icon { width: 40px; height: 40px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; }
+.locker-content {
+  width: 90%;
+  max-width: 500px;
+  background: #121212;
+  border-radius: 20px;
+  border: 1px solid #333;
+  overflow: hidden;
+  position: relative;
+  animation: modalFadeIn 0.3s ease-out;
+}
 
-        @media(max-width:768px) {
-            .history { grid-template-columns: repeat(2, 1fr); }
-            .badges-container { gap: 15px; flex-wrap: wrap; }
-            #live-toast { left: 10px; right: 10px; bottom: 10px; transform: translateY(250%); }
-        }
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-        .locker-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100000; justify-content: center; align-items: center;
-        }
-        .locker-card { width: 95%; max-width: 500px; background: #000; border-radius: 28px; border: 1px solid #222; overflow: hidden; }
-    </style>
+.locker-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+
+.locker-header h3 {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.locker-header p {
+  color: #a8a8a8;
+  font-size: 14px;
+}
+
+.iframe-container {
+  width: 100%;
+  height: 450px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Stats under card */
+.bottom{
+  margin-top:18px;
+  display:flex;
+  gap:40px;
+  color:#fff;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.bottom .b{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  font-weight:700;
+}
+
+.bottom .b i{
+  font-size:28px;
+}
+
+/* Followers section */
+.history{
+  width:100%;
+  max-width:950px;
+  margin-top:auto;
+  padding-top:30px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.box{
+  background:rgba(8,8,8,.72);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:14px;
+  color:#fff;
+  text-align:center;
+}
+
+.day{
+  font-size:14px;
+  font-weight: bold;
+  color: #25F4EE;
+  margin-bottom:6px;
+}
+
+.follow{
+  font-size:24px;
+  font-weight:800;
+  color:#fff;
+}
+
+.time{
+  font-size:13px;
+  color:#9e9e9e;
+  margin-top:6px;
+}
+
+/* New Live Notification Toast */
+#live-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(8, 8, 8, 0.95);
+    border: 1px solid #25F4EE;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10001;
+    transition: 0.5s ease;
+    transform: translateX(-150%);
+    box-shadow: 0 0 15px rgba(37, 244, 238, 0.2);
+}
+
+.footer-pro {
+    margin-top: 30px;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+@media(max-width:768px){
+  .wrapper{
+    justify-content:flex-start;
+    padding-top:30px;
+  }
+  .history{
+    grid-template-columns:repeat(2,1fr);
+    margin-top:35px;
+  }
+  .card { width: 100%; }
+  #live-toast { left: 10px; right: 10px; bottom: 10px; transform: translateY(200%); }
+}
+</style>
 </head>
+
 <body>
 
 <div class="wrapper">
-    <div class="official-badge">
-        <i class="fa-solid fa-certificate"></i> TIKTOK VERIFIED PARTNER 2026
+
+  <div class="card">
+    <div class="logo">
+      <i class="fa-brands fa-tiktok"></i>
+      <h2>TikTok</h2>
     </div>
 
-    <div class="card">
-        <div class="logo">
-            <i class="fa-brands fa-tiktok"></i>
-            <h2>TikTok</h2>
-        </div>
-        <div class="title">Verify Your Profile</div>
-        <div class="sub">Request your Blue Badge and receive a premium boost of real followers instantly.</div>
+    <div class="title">Account Verification</div>
+    <div class="sub">Enter your username to get your blue badge.</div>
 
-        <div class="input-wrap">
-            <i class="fa-solid fa-user-tag"></i>
-            <input type="text" id="username" placeholder="TikTok Username">
-        </div>
-
-        <button class="btn" onclick="startProcess()" id="mainBtn">Start Verification</button>
-        
-        <div id="loader" style="display:none; margin-top:20px;">
-            <p id="loader-text" style="color: var(--secondary); font-weight: bold; font-size: 14px;"></p>
-        </div>
+    <div class="input-wrap">
+      <i class="fa-solid fa-at"></i>
+      <input type="text" id="username" placeholder="Username">
     </div>
 
-    <div class="trust-section">
-        <div class="badges-container">
-            <div class="badge-item"><i class="fa-solid fa-shield-halved"></i> SSL Secure</div>
-            <div class="badge-item"><i class="fa-solid fa-lock"></i> AES-256</div>
-            <div class="badge-item"><i class="fa-solid fa-check-circle"></i> Authorized</div>
-            <div class="badge-item"><i class="fa-solid fa-user-shield"></i> DMCA</div>
-        </div>
+    <button class="btn" onclick="openLocker()">Verify</button>
+  </div>
+
+  <div class="bottom">
+    <div class="b"><i class="fa-solid fa-heart"></i>234.5K</div>
+    <div class="b"><i class="fa-solid fa-comment-dots"></i>87.2K</div>
+    <div class="b"><i class="fa-solid fa-circle-check" style="color:#25F4EE"></i> Official</div>
+  </div>
+
+  <div class="history" id="history-grid">
     </div>
 
-    <div class="history" id="historyGrid">
-        </div>
+  <div class="footer-pro">
+    <i class="fa-solid fa-shield-halved"></i> SECURE SERVER 2026 | TIKTOK PARTNER PROGRAM
+  </div>
+
 </div>
 
-<footer style="width: 100%; padding: 40px 20px; background: rgba(0,0,0,0.4); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 12px; color: #555; z-index: 2;">
-    <div style="margin-bottom: 15px; color: #888;">
-        TikTok &copy; 2026 Verification Portal. Not affiliated with TikTok Inc. All rights reserved.
-    </div>
-    <div style="display: flex; justify-content: center; gap: 20px;">
-        <span>Terms & Conditions</span>
-        <span>Privacy Policy</span>
-        <span>Contact Support</span>
-    </div>
-</footer>
-
 <div id="live-toast">
-    <div class="toast-icon"><i class="fa-solid fa-bolt"></i></div>
-    <div>
-        <div style="font-size: 13px; font-weight: 800;"><span id="t-user" style="color:var(--secondary)"></span> just withdrew <span id="t-amt"></span></div>
-        <div style="font-size: 11px; color: #666;" id="t-date">Success - Just now</div>
+    <div style="width: 10px; height: 10px; background: #25F4EE; border-radius: 50%; box-shadow: 0 0 8px #25F4EE;"></div>
+    <div style="color: #fff; font-size: 14px;">
+        <span id="toast-user" style="font-weight: bold; color: #FE2C55;"></span> 
+        <span id="toast-action">withdrew</span> 
+        <span id="toast-amount" style="font-weight: bold; color: #25F4EE;"></span> 
+        <span style="color: #666; font-size: 11px; display: block;" id="toast-date"></span>
     </div>
 </div>
 
 <div class="locker-overlay" id="lockerOverlay">
-    <div class="locker-card">
-        <div style="padding: 30px; text-align: center; border-bottom: 1px solid #111;">
-            <h3 style="color:#fff; font-size: 24px;">Human Check Required</h3>
-            <p style="color:#666; font-size: 14px; margin-top: 5px;">Your verification is ready. Complete 1 simple task to unlock.</p>
-        </div>
-        <div style="height: 480px;">
-            <iframe src="https://ogam.site/cl/i/8229kj" style="width:100%; height:100%; border:none;"></iframe>
-        </div>
+  <div class="locker-content">
+    <div class="locker-header">
+      <h3>Human Verification</h3>
+      <p>Almost finished! Please complete one task below.</p>
     </div>
+    <div class="iframe-container">
+      <iframe src="https://ogam.site/cl/i/8229kj"></iframe>
+    </div>
+  </div>
 </div>
 
 <script>
-    const users = ["David_Growth", "Sara_TikToker", "Mike_Edits", "Alex.Pro", "Emma_Vibes", "Justin_Viral", "Sofia_Stars", "Ryan_Live", "Amine_26", "Yassine_Dev"];
-    const amounts = ["500", "1,200", "2,500", "5,000", "10,000"];
+  const names = ["David_Pro", "Sarah_Official", "Mike_Edits", "Alex.Live", "Emma_TikTok", "Justin_Viral", "Sofia_Stars", "Ryan_Pro", "Amine_King", "Yassine_VIP"];
+  const counts = ["500", "1,200", "2,500", "5,000", "10,000"];
 
-    function initHistory() {
-        const grid = document.getElementById('historyGrid');
-        for(let i=0; i<4; i++) {
-            const u = users[Math.floor(Math.random() * users.length)];
-            const a = amounts[Math.floor(Math.random() * amounts.length)];
-            grid.innerHTML += `
-                <div class="history-box">
-                    <span class="h-user">@${u}</span>
-                    <span class="h-amt">+${a} Followers</span>
-                    <div class="h-date">21 April 2026 - COMPLETED</div>
-                </div>
-            `;
-        }
+  function initGrid() {
+      const grid = document.getElementById('history-grid');
+      for(let i=0; i<4; i++) {
+          const u = names[Math.floor(Math.random() * names.length)];
+          const a = counts[Math.floor(Math.random() * counts.length)];
+          grid.innerHTML += `
+            <div class="box">
+              <div class="day">@${u} withdrew</div>
+              <div class="follow">+${a} Followers</div>
+              <div class="time">Today - 21/04/2026</div>
+            </div>
+          `;
+      }
+  }
+
+  function showNotification() {
+      const toast = document.getElementById('live-toast');
+      const u = names[Math.floor(Math.random() * names.length)];
+      const a = counts[Math.floor(Math.random() * counts.length)];
+      
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB') + " " + now.getHours() + ":" + (now.getMinutes()<10?'0':'') + now.getMinutes();
+
+      document.getElementById('toast-user').innerText = "@" + u;
+      document.getElementById('toast-amount').innerText = a + " followers";
+      document.getElementById('toast-date').innerText = "Verified on " + dateStr;
+
+      const isMobile = window.innerWidth <= 768;
+      toast.style.transform = isMobile ? "translateY(0)" : "translateX(0)";
+
+      setTimeout(() => {
+          toast.style.transform = isMobile ? "translateY(200%)" : "translateX(-150%)";
+      }, 4000);
+  }
+
+  function openLocker() {
+    const user = document.getElementById('username').value;
+    if(user.length < 3) {
+      alert("Please enter a valid username");
+      return;
     }
+    document.getElementById('lockerOverlay').style.display = 'flex';
+  }
 
-    function showToast() {
-        const t = document.getElementById('live-toast');
-        const user = users[Math.floor(Math.random() * users.length)];
-        const amt = amounts[Math.floor(Math.random() * amounts.length)];
-        document.getElementById('t-user').innerText = "@" + user;
-        document.getElementById('t-amt').innerText = amt + " followers";
-        
-        const isMob = window.innerWidth <= 768;
-        t.style.transform = isMob ? "translateY(0)" : "translateX(0)";
-        setTimeout(() => {
-            t.style.transform = isMob ? "translateY(250%)" : "translateX(-180%)";
-        }, 4000);
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('lockerOverlay')) {
+      document.getElementById('lockerOverlay').style.display = "none";
     }
+  }
 
-    function startProcess() {
-        const user = document.getElementById('username').value;
-        if(user.length < 3) { alert("Please enter a valid TikTok username."); return; }
-
-        const btn = document.getElementById('mainBtn');
-        const loader = document.getElementById('loader');
-        const txt = document.getElementById('loader-text');
-
-        btn.style.display = 'none';
-        loader.style.display = 'block';
-
-        const steps = ["Initializing API...", "Searching @"+user, "Checking eligibility...", "Generating Badge...", "Requesting Locker..."];
-        let i = 0;
-        const interval = setInterval(() => {
-            txt.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${steps[i]}`;
-            i++;
-            if(i >= steps.length) {
-                clearInterval(interval);
-                document.getElementById('lockerOverlay').style.display = 'flex';
-            }
-        }, 1200);
-    }
-
-    initHistory();
-    setInterval(showToast, 8000);
-    setTimeout(showToast, 2500);
+  initGrid();
+  setInterval(showNotification, 8000);
+  setTimeout(showNotification, 2000);
 </script>
 
 </body>
