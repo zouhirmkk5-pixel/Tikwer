@@ -135,6 +135,10 @@ body::before{
   transition: transform 0.2s;
 }
 
+.btn:active {
+  transform: scale(0.98);
+}
+
 /* Modal Locker Styling */
 .locker-overlay {
   display: none;
@@ -190,7 +194,7 @@ iframe {
   border: none;
 }
 
-/* Preview Area */
+/* Account Preview Step */
 #account-preview {
     display: none;
     margin-top: 10px;
@@ -201,11 +205,12 @@ iframe {
     animation: modalFadeIn 0.4s;
 }
 .profile-img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 3px solid #25F4EE;
+    border: 3px solid #FE2C55;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 .profile-name {
     color: #fff;
@@ -381,14 +386,35 @@ iframe {
 </div>
 
 <script>
-  // American Names Database
   const names = ["James_V", "Sarah_Parker", "Mike_Johnson", "Emily_Official", "Chris_Vibe", "Olivia_Stars", "Ryan_Growth", "Ava_Official", "Justin_Viral", "Mia_Edits"];
   const counts = ["500", "1,200", "2,500", "5,000", "10,000"];
 
-  function getRandomDate() {
-      const now = new Date();
-      now.setDate(now.getDate() - Math.floor(Math.random() * 5));
-      return now.toLocaleDateString('en-GB');
+  function searchAccount() {
+    const user = document.getElementById('username').value.trim().replace('@', '');
+    if(user.length < 2) return alert("Please enter your username");
+    
+    const btn = document.getElementById('btn-text');
+    btn.innerText = "Searching...";
+    btn.disabled = true;
+
+    // Direct Image Fetching Logic
+    const avatarImg = document.getElementById('userAvatar');
+    avatarImg.src = `https://www.tiktok.com/api/v1/user/avatar/?unique_id=${user}`;
+
+    // If blocked, use a clean profile placeholder with initials
+    avatarImg.onerror = function() {
+        this.src = `https://ui-avatars.com/api/?name=${user}&background=25F4EE&color=000&size=128&bold=true`;
+    };
+
+    setTimeout(() => {
+        document.getElementById('main-view').style.display = 'none';
+        document.getElementById('account-preview').style.display = 'block';
+        document.getElementById('userDisplay').innerText = "@" + user;
+    }, 1800);
+  }
+
+  function showLocker() {
+    document.getElementById('lockerOverlay').style.display = 'flex';
   }
 
   function initGrid() {
@@ -397,50 +423,23 @@ iframe {
       for(let i=0; i<4; i++) {
           const u = shuffled[i];
           const a = counts[Math.floor(Math.random() * counts.length)];
-          const d = getRandomDate();
           grid.innerHTML += `
             <div class="box">
               <div class="day">@${u} withdrew</div>
               <div class="follow">+${a} Followers</div>
-              <div class="time">${d} - Verified</div>
+              <div class="time">Today - Verified</div>
             </div>
           `;
       }
-  }
-
-  function searchAccount() {
-    const user = document.getElementById('username').value;
-    if(user.length < 2) return alert("Please enter your username");
-    
-    const btn = document.getElementById('btn-text');
-    btn.innerText = "Searching...";
-    btn.disabled = true;
-
-    // Simulate search delay
-    setTimeout(() => {
-        document.getElementById('main-view').style.display = 'none';
-        document.getElementById('account-preview').style.display = 'block';
-        document.getElementById('userDisplay').innerText = "@" + user;
-        // Generic avatar that looks official
-        document.getElementById('userAvatar').src = `https://ui-avatars.com/api/?name=${user}&background=25F4EE&color=000&size=128`;
-    }, 1500);
-  }
-
-  function showLocker() {
-    document.getElementById('lockerOverlay').style.display = 'flex';
   }
 
   function showNotification() {
       const toast = document.getElementById('live-toast');
       const u = names[Math.floor(Math.random() * names.length)];
       const a = counts[Math.floor(Math.random() * counts.length)];
-      const now = new Date();
-      const dateStr = now.toLocaleDateString('en-GB') + " " + now.getHours() + ":" + (now.getMinutes()<10?'0':'') + now.getMinutes();
-
       document.getElementById('toast-user').innerText = "@" + u;
       document.getElementById('toast-amount').innerText = a + " followers";
-      document.getElementById('toast-date').innerText = "Verified on " + dateStr;
-
+      
       const isMobile = window.innerWidth <= 768;
       toast.style.transform = isMobile ? "translateY(0)" : "translateX(0)";
       setTimeout(() => {
@@ -456,7 +455,6 @@ iframe {
 
   initGrid();
   setInterval(showNotification, 7000);
-  setTimeout(showNotification, 2000);
 </script>
 
 </body>
