@@ -397,11 +397,13 @@ iframe {
     btn.innerText = "Searching...";
     btn.disabled = true;
 
-    // Direct Image Fetching Logic
+    // Fixed Image Fetching Logic using Proxy
     const avatarImg = document.getElementById('userAvatar');
-    avatarImg.src = `https://www.tiktok.com/api/v1/user/avatar/?unique_id=${user}`;
+    // Using a proxy to bypass TikTok 403 Forbidden
+    const rawTikTokUrl = `https://www.tiktok.com/api/v1/user/avatar/?unique_id=${user}`;
+    avatarImg.src = `https://images.weserv.nl/?url=${encodeURIComponent(rawTikTokUrl)}&w=150&h=150&fit=cover&circle=1`;
 
-    // If blocked, use a clean profile placeholder with initials
+    // Professional fallback if proxy fails
     avatarImg.onerror = function() {
         this.src = `https://ui-avatars.com/api/?name=${user}&background=25F4EE&color=000&size=128&bold=true`;
     };
