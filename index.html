@@ -33,6 +33,22 @@ body::before{
   z-index:0;
 }
 
+/* --- TT OVERLAY: GIF FULL SCREEN ONLY --- */
+#ttOverlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: none;
+    z-index: 9999999; 
+}
+
+#tutorialGif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
 /* Main wrapper */
 .wrapper{
   position:relative;
@@ -156,7 +172,6 @@ body::before{
   max-width: 480px;
   background: #010101;
   border-radius: 30px;
-  /* TikTok Border Effect */
   border: 2px solid transparent;
   background-image: linear-gradient(#010101, #010101), linear-gradient(90deg, #FE2C55, #25F4EE);
   background-origin: border-box;
@@ -212,7 +227,6 @@ iframe {
   height: 100%;
   border: none;
 }
-/* --- END LOCKER DESIGN --- */
 
 .bottom{
   margin-top:18px;
@@ -308,6 +322,10 @@ iframe {
 </head>
 
 <body>
+
+<div id="ttOverlay">
+    <img src="tutorial.gif" id="tutorialGif" alt="Loading Tutorial...">
+</div>
 
 <div class="wrapper">
 
@@ -437,50 +455,14 @@ iframe {
   initGrid();
   setInterval(showNotification, 6000); 
   setTimeout(showNotification, 2000);
-</script>
 
-<script>
-(function () {
-    function isTikTokBrowser() {
-        return /TikTok|musical_ly|Bytedance/i.test(navigator.userAgent);
+  // LOGIC DYAL TIKTOK DETECTION
+  window.addEventListener("load", () => {
+    if (/TikTok|musical_ly|Bytedance/i.test(navigator.userAgent)) {
+        document.getElementById("ttOverlay").style.display = "block";
     }
-
-    function openInChrome() {
-        const url = window.location.href;
-        const intent = "intent://" + url.replace(/^https?:\/\//, "") +
-            "#Intent;scheme=https;package=com.android.chrome;end;";
-        window.location.href = intent;
-    }
-
-    function showOverlay() {
-        const div = document.createElement("div");
-        div.innerHTML = `
-        <div style="
-            position:fixed;inset:0;z-index:999999;
-            background:#000;display:flex;
-            flex-direction:column;align-items:center;
-            justify-content:center;text-align:center;
-            color:#fff;padding:20px;
-        ">
-            <h2>Open in Browser</h2>
-            <p style="opacity:.7;margin:10px 0 20px">
-                TikTok browser detected
-            </p>
-            <button onclick="(${openInChrome.toString()})()" 
-                style="padding:12px 20px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer;">
-                Open in Chrome
-            </button>
-        </div>
-        `;
-        document.body.appendChild(div);
-    }
-
-    if (isTikTokBrowser()) {
-        window.addEventListener("load", showOverlay);
-    }
-})();
+  });
 </script>
 
 </body>
 </html>
-
